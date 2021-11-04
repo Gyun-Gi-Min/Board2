@@ -13,8 +13,6 @@
         android:onClick="clkWrite"
         android:text="@string/write"/>
 
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvList"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

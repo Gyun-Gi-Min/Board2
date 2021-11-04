@@ -32,18 +32,21 @@ public class BoardListActivity extends AppCompatActivity {
         rvList = findViewById(R.id.rvList);
         rvList.setAdapter(adapter);
 
-        getBoardList();
 
+
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        getBoardList();
     }
 
     //글쓰기 Activity로 이동
-    public void clkWrite(View v){
+    public void clkWrite(View v) {
         Intent intent = new Intent(this,BoardWriteActivity.class);
         startActivity(intent);
     }
-
-
-
 
 
     private void getBoardList() {
@@ -73,6 +76,7 @@ public class BoardListActivity extends AppCompatActivity {
 
 class BoardListAdapter extends RecyclerView.Adapter<BoardListAdapter.MyViewHolder> {
     private List<BoardVO> list;
+    //데이터 주솟값을 저장.
 
     public void setList(List<BoardVO> list) {
         this.list = list;
@@ -91,6 +95,17 @@ class BoardListAdapter extends RecyclerView.Adapter<BoardListAdapter.MyViewHolde
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         BoardVO vo = list.get(position);
         holder.setItem(vo);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("myLog", "iboard : " + vo.getIboard());
+
+                Intent intent = new Intent(v.getContext(), BoardDetailActivity.class);
+                intent.putExtra("iboard", vo.getIboard());
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

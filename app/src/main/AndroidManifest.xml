@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Board"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".BoardModeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BoardDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".BoardWriteActivity"
             android:exported="false" />
         <activity
